@@ -16,7 +16,7 @@ namespace Admin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
+            Application.Run(new Views.Home());
         }
     }
 }

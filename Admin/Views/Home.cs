@@ -12,9 +12,85 @@ namespace Admin.Views
 {
     public partial class Home: Form
     {
+        private Form form;
         public Home()
         {
             InitializeComponent();
+        }
+
+        private void SetContentForm(Type type, params Object[] args)
+        {
+            if (type == null) return;
+
+            if (form == null || form.GetType() != type)
+                form = (Form)Activator.CreateInstance(type, args);
+
+            form.Dock = DockStyle.None; // Tạm thời không dùng Dock để kiểm soát kích thước
+            form.TopLevel = false;
+            form.TopMost = true;
+            form.AutoScroll = true;
+            form.FormBorderStyle = FormBorderStyle.None;
+
+            form.Size = contentPanel.ClientSize;
+            form.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
+            contentPanel.Controls.Clear();
+            contentPanel.Controls.Add(form);
+
+            form.Show();
+        }
+
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            loginForm.ShowDialog();
+
+            if (!loginForm.Logged)
+            {
+                Close();
+                return;
+            }
+
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            contentPanel.Controls.Clear();
+
+            // Relogin
+            LoginForm loginForm = new LoginForm();
+            loginForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            loginForm.ShowDialog();
+
+            if (!loginForm.Logged)
+                Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SetContentForm(typeof(UserForm));
+        }
+
+        private void buttonQLthietbi_Click(object sender, EventArgs e)
+        {
+            SetContentForm(typeof(DeviceForm));
+        }
+
+        private void buttonQLdatcho_Click(object sender, EventArgs e)
+        {
+            SetContentForm(typeof(ReservationForm));
+        }
+
+        private void buttonQLphieumuon_Click(object sender, EventArgs e)
+        {
+            SetContentForm(typeof(BorrowForm));
+        }
+
+        private void buttonXLVP_Click(object sender, EventArgs e)
+        {
+            SetContentForm(typeof(ViolationForm));
         }
     }
 }

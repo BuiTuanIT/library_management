@@ -92,5 +92,11 @@ namespace Admin.Views
         {
             SetContentForm(typeof(ViolationForm));
         }
+
+        private void CheckinButton_Click(object sender, EventArgs e)
+        {
+            CheckinForm checkinForm = new CheckinForm();
+            checkinForm.ShowDialog();
+        }
     }
 }

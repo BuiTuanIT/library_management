@@ -9,21 +9,16 @@ namespace Shared.Models
 {
     public class Users
     {
-        [Column("user_id")]
         public int UserId { get; set; }
-
-        [Column("username")]
         public string UserName { get; set; }
-
-        [Column("password")]
         public string Password { get; set; }
-
         public DateTime Birthday { get; set; }
         public string Sex { get; set; }
-        public string last_checkin { get; set; }
+        public DateTime? last_checkin { get; set; }
         public string email { get; set; }
         public string phone { get; set; }
         public int is_active { get; set; }
+        public string student_code { get; set; }
 
     }
 }

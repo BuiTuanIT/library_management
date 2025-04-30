@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CheckinButton = new MaterialSkin.Controls.MaterialButton();
             this.logoutButton = new MaterialSkin.Controls.MaterialButton();
             this.buttonXLVP = new System.Windows.Forms.Button();
             this.buttonQLphieumuon = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.DarkViolet;
+            this.panel1.Controls.Add(this.CheckinButton);
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.buttonXLVP);
             this.panel1.Controls.Add(this.buttonQLphieumuon);
@@ -56,6 +58,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(263, 797);
             this.panel1.TabIndex = 0;
+            // 
+            // CheckinButton
+            // 
+            this.CheckinButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CheckinButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.CheckinButton.Depth = 0;
+            this.CheckinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckinButton.HighEmphasis = true;
+            this.CheckinButton.Icon = null;
+            this.CheckinButton.Location = new System.Drawing.Point(83, 621);
+            this.CheckinButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.CheckinButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckinButton.Name = "CheckinButton";
+            this.CheckinButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.CheckinButton.Size = new System.Drawing.Size(87, 36);
+            this.CheckinButton.TabIndex = 7;
+            this.CheckinButton.Text = "Check in";
+            this.CheckinButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.CheckinButton.UseAccentColor = false;
+            this.CheckinButton.UseVisualStyleBackColor = true;
+            this.CheckinButton.Click += new System.EventHandler(this.CheckinButton_Click);
             // 
             // logoutButton
             // 
@@ -176,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1311, 801);
+            this.ClientSize = new System.Drawing.Size(1308, 800);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.panel1);
             this.Name = "Home";
@@ -201,5 +224,6 @@
         private System.Windows.Forms.Button buttonXLVP;
         private MaterialSkin.Controls.MaterialButton logoutButton;
         private System.Windows.Forms.Panel contentPanel;
+        private MaterialSkin.Controls.MaterialButton CheckinButton;
     }
 }

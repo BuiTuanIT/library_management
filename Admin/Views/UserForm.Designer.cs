@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ListUser = new System.Windows.Forms.DataGridView();
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.excel = new System.Windows.Forms.Button();
             this.Reload = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.RepairButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
-            this.ListUser = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListUser)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -48,49 +50,76 @@
             this.panel2.Size = new System.Drawing.Size(1013, 678);
             this.panel2.TabIndex = 5;
             // 
+            // ListUser
+            // 
+            this.ListUser.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ListUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.chk});
+            this.ListUser.Location = new System.Drawing.Point(3, 0);
+            this.ListUser.Name = "ListUser";
+            this.ListUser.RowHeadersVisible = false;
+            this.ListUser.RowHeadersWidth = 51;
+            this.ListUser.RowTemplate.Height = 24;
+            this.ListUser.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListUser.Size = new System.Drawing.Size(1007, 675);
+            this.ListUser.TabIndex = 0;
+            this.ListUser.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // chk
+            // 
+            this.chk.HeaderText = "Select";
+            this.chk.MinimumWidth = 6;
+            this.chk.Name = "chk";
+            this.chk.Width = 50;
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.excel);
             this.panel1.Controls.Add(this.Reload);
             this.panel1.Controls.Add(this.DeleteButton);
-            this.panel1.Controls.Add(this.RepairButton);
             this.panel1.Controls.Add(this.AddButton);
             this.panel1.Location = new System.Drawing.Point(4, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1011, 86);
             this.panel1.TabIndex = 4;
             // 
+            // excel
+            // 
+            this.excel.BackColor = System.Drawing.Color.SpringGreen;
+            this.excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.excel.Location = new System.Drawing.Point(810, 10);
+            this.excel.Name = "excel";
+            this.excel.Size = new System.Drawing.Size(187, 59);
+            this.excel.TabIndex = 4;
+            this.excel.Text = "Thêm Excel";
+            this.excel.UseVisualStyleBackColor = false;
+            this.excel.Click += new System.EventHandler(this.excel_Click);
+            // 
             // Reload
             // 
             this.Reload.BackColor = System.Drawing.Color.DarkViolet;
             this.Reload.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reload.Location = new System.Drawing.Point(562, 10);
+            this.Reload.Location = new System.Drawing.Point(357, 10);
             this.Reload.Name = "Reload";
             this.Reload.Size = new System.Drawing.Size(144, 59);
             this.Reload.TabIndex = 3;
             this.Reload.Text = "Reload";
             this.Reload.UseVisualStyleBackColor = false;
+            this.Reload.Click += new System.EventHandler(this.Reload_Click);
             // 
             // DeleteButton
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.DarkViolet;
             this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.Location = new System.Drawing.Point(375, 10);
+            this.DeleteButton.Location = new System.Drawing.Point(183, 10);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(144, 59);
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Xóa";
             this.DeleteButton.UseVisualStyleBackColor = false;
-            // 
-            // RepairButton
-            // 
-            this.RepairButton.BackColor = System.Drawing.Color.DarkViolet;
-            this.RepairButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RepairButton.Location = new System.Drawing.Point(195, 10);
-            this.RepairButton.Name = "RepairButton";
-            this.RepairButton.Size = new System.Drawing.Size(144, 59);
-            this.RepairButton.TabIndex = 1;
-            this.RepairButton.Text = "Sửa";
-            this.RepairButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AddButton
             // 
@@ -102,18 +131,19 @@
             this.AddButton.TabIndex = 0;
             this.AddButton.Text = "Thêm";
             this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // ListUser
+            // button1
             // 
-            this.ListUser.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ListUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListUser.Location = new System.Drawing.Point(3, 3);
-            this.ListUser.Name = "ListUser";
-            this.ListUser.RowHeadersWidth = 51;
-            this.ListUser.RowTemplate.Height = 24;
-            this.ListUser.Size = new System.Drawing.Size(1007, 672);
-            this.ListUser.TabIndex = 0;
-            this.ListUser.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(654, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 59);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Xóa nhiều";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // UserForm
             // 
@@ -125,8 +155,8 @@
             this.Name = "UserForm";
             this.Text = "UserForm";
             this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListUser)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -137,8 +167,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Reload;
         private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button RepairButton;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.DataGridView ListUser;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
+        private System.Windows.Forms.Button excel;
+        private System.Windows.Forms.Button button1;
     }
 }

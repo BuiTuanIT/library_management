@@ -67,7 +67,7 @@
             this.CheckinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckinButton.HighEmphasis = true;
             this.CheckinButton.Icon = null;
-            this.CheckinButton.Location = new System.Drawing.Point(83, 621);
+            this.CheckinButton.Location = new System.Drawing.Point(82, 669);
             this.CheckinButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.CheckinButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CheckinButton.Name = "CheckinButton";

@@ -213,6 +213,7 @@
     <Compile Include="Controller\DatabaseHelper.cs" />
     <Compile Include="Controller\DeviceController.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Controller\ViolationController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\BorrowForm.cs">
@@ -232,6 +233,12 @@
     </Compile>
     <Compile Include="Views\DeviceForm.Designer.cs">
       <DependentUpon>DeviceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceForms\DeleteWithCondition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DeviceForms\DeleteWithCondition.Designer.cs">
+      <DependentUpon>DeleteWithCondition.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DeviceForms\DetailForm.cs">
       <SubType>Form</SubType>
@@ -281,6 +288,12 @@
     <Compile Include="Views\ViolationForm.Designer.cs">
       <DependentUpon>ViolationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViolationForms\DetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViolationForms\DetailForm.Designer.cs">
+      <DependentUpon>DetailForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -298,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DeviceForm.resx">
       <DependentUpon>DeviceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DeviceForms\DeleteWithCondition.resx">
+      <DependentUpon>DeleteWithCondition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DeviceForms\DetailForm.resx">
       <DependentUpon>DetailForm.cs</DependentUpon>
@@ -322,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ViolationForm.resx">
       <DependentUpon>ViolationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViolationForms\DetailForm.resx">
+      <DependentUpon>DetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

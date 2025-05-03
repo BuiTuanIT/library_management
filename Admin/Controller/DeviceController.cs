@@ -96,5 +96,15 @@ namespace Admin.Controller
             };
             return db.ExecuteNonQuery(query, parameters);
         }
+
+        public bool DeleteDevicesByCodePattern(string codePattern)
+        {
+            string query = "DELETE FROM device WHERE device_code LIKE @code_pattern";
+            MySqlParameter[] parameters =
+            {
+                new MySqlParameter("@code_pattern", "%" + codePattern + "%")
+            };
+            return db.ExecuteNonQuery(query, parameters);
+        }
     }
 }

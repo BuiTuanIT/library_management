@@ -45,7 +45,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkViolet;
+            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.panel1.Controls.Add(this.CheckinButton);
             this.panel1.Controls.Add(this.logoutButton);
             this.panel1.Controls.Add(this.buttonXLVP);
@@ -102,7 +102,7 @@
             // 
             // buttonXLVP
             // 
-            this.buttonXLVP.BackColor = System.Drawing.Color.DarkViolet;
+            this.buttonXLVP.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonXLVP.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonXLVP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonXLVP.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -116,7 +116,7 @@
             // 
             // buttonQLphieumuon
             // 
-            this.buttonQLphieumuon.BackColor = System.Drawing.Color.DarkViolet;
+            this.buttonQLphieumuon.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonQLphieumuon.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonQLphieumuon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonQLphieumuon.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -130,7 +130,7 @@
             // 
             // buttonQLdatcho
             // 
-            this.buttonQLdatcho.BackColor = System.Drawing.Color.DarkViolet;
+            this.buttonQLdatcho.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonQLdatcho.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonQLdatcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonQLdatcho.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -144,7 +144,7 @@
             // 
             // buttonQLthietbi
             // 
-            this.buttonQLthietbi.BackColor = System.Drawing.Color.DarkViolet;
+            this.buttonQLthietbi.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.buttonQLthietbi.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonQLthietbi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonQLthietbi.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -158,7 +158,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkViolet;
+            this.button1.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.button1.Cursor = System.Windows.Forms.Cursors.Default;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlText;

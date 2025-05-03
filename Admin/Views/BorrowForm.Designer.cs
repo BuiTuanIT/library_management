@@ -33,7 +33,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Reload = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.RepairButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -70,7 +69,6 @@
             // 
             this.panel1.Controls.Add(this.Reload);
             this.panel1.Controls.Add(this.DeleteButton);
-            this.panel1.Controls.Add(this.RepairButton);
             this.panel1.Controls.Add(this.AddButton);
             this.panel1.Location = new System.Drawing.Point(4, 13);
             this.panel1.Name = "panel1";
@@ -81,7 +79,7 @@
             // 
             this.Reload.BackColor = System.Drawing.Color.DarkViolet;
             this.Reload.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Reload.Location = new System.Drawing.Point(562, 10);
+            this.Reload.Location = new System.Drawing.Point(382, 10);
             this.Reload.Name = "Reload";
             this.Reload.Size = new System.Drawing.Size(144, 59);
             this.Reload.TabIndex = 3;
@@ -92,23 +90,12 @@
             // 
             this.DeleteButton.BackColor = System.Drawing.Color.DarkViolet;
             this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.Location = new System.Drawing.Point(375, 10);
+            this.DeleteButton.Location = new System.Drawing.Point(195, 10);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(144, 59);
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Xóa";
             this.DeleteButton.UseVisualStyleBackColor = false;
-            // 
-            // RepairButton
-            // 
-            this.RepairButton.BackColor = System.Drawing.Color.DarkViolet;
-            this.RepairButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RepairButton.Location = new System.Drawing.Point(195, 10);
-            this.RepairButton.Name = "RepairButton";
-            this.RepairButton.Size = new System.Drawing.Size(144, 59);
-            this.RepairButton.TabIndex = 1;
-            this.RepairButton.Text = "Sửa";
-            this.RepairButton.UseVisualStyleBackColor = false;
             // 
             // AddButton
             // 
@@ -143,7 +130,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Reload;
         private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button RepairButton;
         private System.Windows.Forms.Button AddButton;
     }
 }

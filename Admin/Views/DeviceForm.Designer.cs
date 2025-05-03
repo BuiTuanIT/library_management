@@ -95,6 +95,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Xóa nhiều";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // excel
             // 
@@ -106,6 +107,7 @@
             this.excel.TabIndex = 4;
             this.excel.Text = "Thêm Excel";
             this.excel.UseVisualStyleBackColor = false;
+            this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
             // Reload
             // 
@@ -117,6 +119,7 @@
             this.Reload.TabIndex = 3;
             this.Reload.Text = "Reload";
             this.Reload.UseVisualStyleBackColor = false;
+            this.Reload.Click += new System.EventHandler(this.Reload_Click);
             // 
             // DeleteButton
             // 
@@ -128,6 +131,7 @@
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Xóa";
             this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AddButton
             // 

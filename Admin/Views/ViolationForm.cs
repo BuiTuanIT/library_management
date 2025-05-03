@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Admin.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,27 @@ namespace Admin.Views
 {
     public partial class ViolationForm: Form
     {
+        private ViolationController violationController = new ViolationController();
         public ViolationForm()
         {
             InitializeComponent();
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            try
+            {
+                ListViolation.DataSource = violationController.GetViolations();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
+            }
+        }
+        private void ViolationForm_Load(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }

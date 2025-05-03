@@ -27,32 +27,50 @@ namespace Admin.Views.DeviceForms
         public DetailForm()
         {
             InitializeComponent();
+            LoadDeviceDetails();
         }
 
         private void LoadDeviceDetails()
         {
-            Device device = deviceController.GetDeviceById(IdDevice);
-            if (device != null)
+            var categories = categoryDeviceController.GetAllCategories();
+
+            // Gán vào combobox
+            cbbName.DataSource = categories;
+            cbbName.DisplayMember = "Name";
+            cbbName.ValueMember = "Id";
+
+            // Nếu là form sửa (có IdDevice)
+            if (IdDevice > 0)
             {
-                cbbName.DataSource = categoryDeviceController.GetAllCategories();
-                cbbName.DisplayMember = "Name";
-                cbbName.ValueMember = "Id";
-
-                txtID.Text = device.Device_Id.ToString();
-                txtCode.Text = device.Device_Code;
-                cbbStatus.SelectedItem = device.Status;
-                if (device.Is_Borrowed == 1)
+                Device device = deviceController.GetDeviceById(IdDevice);
+                if (device != null)
                 {
-                    borrow.Checked = true;
-                }
-                else
-                {
-                    borrow.Checked = false;
-                }
+                    // Set lại giá trị được chọn
+                    cbbName.SelectedValue = device.Category_Id;
 
-                
+                    // Gán các field còn lại
+                    txtID.Text = device.Device_Id.ToString();
+                    txtCode.Text = device.Device_Code;
+                    cbbStatus.SelectedItem = device.Status;
+                    if (device.Is_Borrowed == 1)
+                    {
+                        borrow.Checked = true;
+                    }
+                    else
+                    {
+                        borrow.Checked = false;
+                    }
+                }
+            }
+            else
+            {
+                // Nếu là form thêm mới, set giá trị mặc định
+                cbbName.SelectedIndex = 0;
+                cbbStatus.SelectedIndex = 0;
+                borrow.Checked = false;
             }
         }
+
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -67,7 +85,7 @@ namespace Admin.Views.DeviceForms
                 {
                     Device_Code = txtCode.Text,
                     Status = cbbStatus.Text,
-                    Category_Id = Convert.ToInt32(cbbName.SelectedItem),
+                    Category_Id = Convert.ToInt32(cbbName.SelectedValue),
                     Is_Borrowed = borrow.Checked ? 1 : 0
                 };
                 if (deviceController.AddDevice(device))
@@ -86,7 +104,7 @@ namespace Admin.Views.DeviceForms
                     Device_Id = Convert.ToInt32(txtID.Text),
                     Device_Code = txtCode.Text,
                     Status = cbbStatus.Text,
-                    Category_Id = Convert.ToInt32(cbbName.SelectedItem),
+                    Category_Id = Convert.ToInt32(cbbName.SelectedValue),
                     Is_Borrowed = borrow.Checked ? 1 : 0
                 };
                 if (deviceController.UpdateDevice(device))

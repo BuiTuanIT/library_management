@@ -222,11 +222,23 @@
     <Compile Include="Views\BorrowForm.Designer.cs">
       <DependentUpon>BorrowForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\CategoryForms\DetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CategoryForms\DetailForm.Designer.cs">
+      <DependentUpon>DetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CheckinForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\CheckinForm.Designer.cs">
       <DependentUpon>CheckinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DeviceCategoryForm.Designer.cs">
+      <DependentUpon>DeviceCategoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DeviceForm.cs">
       <SubType>Form</SubType>
@@ -306,8 +318,14 @@
     <EmbeddedResource Include="Views\BorrowForm.resx">
       <DependentUpon>BorrowForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CategoryForms\DetailForm.resx">
+      <DependentUpon>DetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\CheckinForm.resx">
       <DependentUpon>CheckinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DeviceCategoryForm.resx">
+      <DependentUpon>DeviceCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DeviceForm.resx">
       <DependentUpon>DeviceForm.cs</DependentUpon>

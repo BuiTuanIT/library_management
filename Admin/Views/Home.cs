@@ -98,5 +98,10 @@ namespace Admin.Views
             CheckinForm checkinForm = new CheckinForm();
             checkinForm.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SetContentForm(typeof(DeviceCategoryForm));
+        }
     }
 }

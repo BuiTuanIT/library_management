@@ -212,6 +212,7 @@
     <Compile Include="Controller\CheckinController.cs" />
     <Compile Include="Controller\DatabaseHelper.cs" />
     <Compile Include="Controller\DeviceController.cs" />
+    <Compile Include="Controller\ReservationController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Controller\ViolationController.cs" />
     <Compile Include="Program.cs" />
@@ -275,6 +276,12 @@
     </Compile>
     <Compile Include="Views\ReservationForm.Designer.cs">
       <DependentUpon>ReservationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReservationForms\DetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ReservationForms\DetailForm.Designer.cs">
+      <DependentUpon>DetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserForm.cs">
       <SubType>Form</SubType>
@@ -344,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ReservationForm.resx">
       <DependentUpon>ReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ReservationForms\DetailForm.resx">
+      <DependentUpon>DetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

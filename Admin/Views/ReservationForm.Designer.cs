@@ -79,6 +79,7 @@
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Xóa";
             this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AddButton
             // 
@@ -106,6 +107,7 @@
             this.ListReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ListReservation.Size = new System.Drawing.Size(1007, 675);
             this.ListReservation.TabIndex = 1;
+            this.ListReservation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListReservation_CellDoubleClick);
             // 
             // chk
             // 

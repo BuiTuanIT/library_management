@@ -22,7 +22,7 @@ namespace Admin.Controller
             {
                 reservations.Add(new Reservations()
                 {
-                    Id = Convert.ToInt32(row["reservation_id"]),
+                    Id = Convert.ToInt32(row["reservations_id"]),
                     Device_Id = Convert.ToInt32(row["device_id"]),
                     User_Id = Convert.ToInt32(row["user_id"]),
                     Start_Date = Convert.ToDateTime(row["reserve_start"]),
@@ -33,12 +33,12 @@ namespace Admin.Controller
             return reservations;
         }
 
-        public List<Reservations> GetReservationsByUserId(int userId)
+        public List<Reservations> GetReservationsById(int Id)
         {
-            string query = "SELECT * FROM reservations WHERE user_id = @userId";
+            string query = "SELECT * FROM reservations WHERE reservations_id = @reservations_id";
             MySqlParameter[] parameters = new MySqlParameter[]
             {
-                new MySqlParameter("@userId", userId)
+                new MySqlParameter("@reservation_id", Id)
             };
             DataTable dt = db.ExecuteQuery(query, parameters);
             List<Reservations> reservations = new List<Reservations>();
@@ -46,7 +46,7 @@ namespace Admin.Controller
             {
                 reservations.Add(new Reservations()
                 {
-                    Id = Convert.ToInt32(row["reservation_id"]),
+                    Id = Convert.ToInt32(row["reservations_id"]),
                     Device_Id = Convert.ToInt32(row["device_id"]),
                     User_Id = Convert.ToInt32(row["user_id"]),
                     Start_Date = Convert.ToDateTime(row["reserve_start"]),
@@ -72,7 +72,7 @@ namespace Admin.Controller
         }
         public bool UpdateReservation(Reservations reservation)
         {
-            string query = "UPDATE reservations SET device_id = @deviceId, user_id = @userId, reserve_start = @startDate, reserve_end = @endDate, status = @status WHERE reservation_id = @id";
+            string query = "UPDATE reservations SET device_id = @deviceId, user_id = @userId, reserve_start = @startDate, reserve_end = @endDate, status = @status WHERE reservations_id = @id";
             MySqlParameter[] parameters = new MySqlParameter[]
             {
                 new MySqlParameter("@deviceId", reservation.Device_Id),
@@ -86,7 +86,7 @@ namespace Admin.Controller
         }
         public bool DeleteReservation(int id)
         {
-            string query = "DELETE FROM reservations WHERE reservation_id = @id";
+            string query = "DELETE FROM reservations WHERE reservations_id = @id";
             MySqlParameter[] parameters = new MySqlParameter[]
             {
                 new MySqlParameter("@id", id)

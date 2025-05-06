@@ -1,0 +1,131 @@
+@model WebApp.Models.User
+
+@{
+    ViewData["Title"] = "Đăng ký tài khoản";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+<link href="~/css/register.css" rel="stylesheet" />
+
+<div class="register-container">
+    <h3 class="text-center">Đăng ký tài khoản</h3>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger text-center">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <form asp-action="Register" method="post">
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label for="UserName" class="form-label">Tên đăng nhập</label>
+                <input type="text" class="form-control" id="UserName" name="UserName" required />
+            </div>
+            <div class="mb-3 col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required />
+            </div>
+
+            <div class="mb-3 col-md-6">
+                <label for="phone" class="form-label">Số điện thoại</label>
+                <input type="tel" class="form-control" id="phone" name="phone"
+                       pattern="[0-9]{10,11}" title="Số điện thoại phải từ 10 đến 11 chữ số" required />
+            </div>
+
+            <div class="mb-3 col-md-6">
+                <label for="Password" class="form-label">Mật khẩu</label>
+                <input type="password" class="form-control" id="Password" name="Password" required
+                       minlength="8" maxlength="16"
+                       pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$"
+                       title="Mật khẩu phải từ 8-16 ký tự, bao gồm cả chữ và số">
+                <div class="form-text">
+                    Mật khẩu phải từ 8-16 ký tự, bao gồm cả chữ và số
+                </div>
+            </div>
+
+            <div class="mb-3 col-md-6">
+                <label for="ConfirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" required />
+                <div class="form-text" id="passwordMatch"></div>
+            </div>
+
+            <div class="mb-3 col-md-6">
+                <label for="sex" class="form-label">Giới tính</label>
+                <select class="form-control" id="sex" name="sex" required>
+                    <option value="">-- Chọn giới tính --</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                    <option value="Khác">Khác</option>
+                </select>
+            </div>
+
+            <div class="mb-4 col-md-6">
+                <label for="student_code" class="form-label">Mã sinh viên</label>
+                <input type="text" class="form-control" id="student_code" name="student_code" required />
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-register w-100 text-white" id="submitBtn">Đăng ký</button>
+    </form>
+
+    <div class="text-center mt-4">
+        <p class="mb-0">Đã có tài khoản? <a href="~/Login" class="text-link">Đăng nhập ngay</a></p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const password = document.getElementById('Password');
+        const confirmPassword = document.getElementById('ConfirmPassword');
+        const passwordMatch = document.getElementById('passwordMatch');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function validatePassword() {
+            const passwordValue = password.value;
+            const confirmValue = confirmPassword.value;
+
+            // Kiểm tra độ dài mật khẩu
+            if (passwordValue.length < 8 || passwordValue.length > 16) {
+                passwordMatch.textContent = 'Mật khẩu phải từ 8-16 ký tự';
+                passwordMatch.style.color = 'red';
+                submitBtn.disabled = true;
+                return false;
+            }
+
+            // Kiểm tra mật khẩu có chứa cả chữ và số
+            if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/.test(passwordValue)) {
+                passwordMatch.textContent = 'Mật khẩu phải bao gồm cả chữ và số';
+                passwordMatch.style.color = 'red';
+                submitBtn.disabled = true;
+                return false;
+            }
+
+            // Kiểm tra mật khẩu khớp nhau
+            if (passwordValue !== confirmValue) {
+                passwordMatch.textContent = 'Mật khẩu không khớp';
+                passwordMatch.style.color = 'red';
+                submitBtn.disabled = true;
+                return false;
+            }
+
+            passwordMatch.textContent = 'Mật khẩu hợp lệ';
+            passwordMatch.style.color = 'green';
+            submitBtn.disabled = false;
+            return true;
+        }
+
+        password.addEventListener('input', validatePassword);
+        confirmPassword.addEventListener('input', validatePassword);
+    });
+</script>

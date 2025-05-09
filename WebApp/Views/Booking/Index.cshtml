@@ -1,0 +1,408 @@
+@{
+    ViewData["Title"] = "Đặt chỗ mượn thiết bị";
+}
+
+<!-- jQuery first -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap & Custom CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/css/profile.css" rel="stylesheet" />
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Test jQuery -->
+<script>
+    window.onload = function() {
+        if (typeof jQuery != 'undefined') {
+            alert('jQuery is loaded!');
+        } else {
+            alert('jQuery is NOT loaded!');
+        }
+    }
+</script>
+
+<style>
+    body {
+        background-color: #f8f9fa; /* Màu nền nhẹ */
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .sidebar {
+        background-color: #198adb !important; /* Màu xanh nhạt dễ chịu cho sidebar */
+        min-height: 100vh;
+        border-right: 1px solid #dee2e6;
+    }
+
+    .sidebar .btn {
+        text-align: left;
+    }
+    .rounded-circle {
+    border: 3px solid #0d6efd;
+}
+
+    .device-card {
+        transition: transform 0.2s;
+        cursor: pointer;
+    }
+    .device-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .device-card.selected {
+        border: 2px solid #0d6efd;
+    }
+    .booking-form {
+        position: sticky;
+        top: 20px;
+    }
+    .category-filter {
+        margin-bottom: 20px;
+    }
+    .category-filter .btn {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+    .category-filter .btn.active {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    /* Thêm CSS cho bảng */
+    .table-container {
+        max-height: 300px;
+        overflow-y: auto;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+    }
+    .table-container thead th {
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .table-container tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 sidebar p-4 shadow-sm">
+            <div class="text-center mb-4">
+                <img src="~/images/avatar-default.png" alt="Avatar" class="rounded-circle" width="120" height="120" />
+                <h5 class="mt-3">@ViewBag.UserEmail</h5>
+                <p class="text-muted">Mã SV: @ViewBag.StudentCode</p>
+            </div>
+
+            <div class="d-grid gap-3">
+                <a href="~/Profile/Index" class="btn btn-primary btn-lg">Hồ sơ cá nhân</a>
+                <a href="~/History/Index" class="btn btn-primary btn-lg">Lịch sử Checkin</a>
+                <a href="~/Booking/Index" class="btn btn-primary btn-lg">Đặt chỗ Mượn Thiết Bị</a>
+                <a href="~/Violation/Index" class="btn btn-primary btn-lg">Thông tin vi phạm</a>
+                <a href="~/Login/Logout" class="btn btn-danger btn-lg">
+                    <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                </a>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="col-md-10 p-5">
+            @if (TempData["SuccessMsg"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["SuccessMsg"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["ErrorMsg"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorMsg"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <div class="row">
+                <!-- Danh sách thiết bị -->
+                <div class="col-md-8">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Danh sách thiết bị</h5>
+                            
+                            <!-- Bộ lọc danh mục -->
+                            <div class="category-filter">
+                                <button class="btn btn-outline-primary active" data-category="all">Tất cả</button>
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    <button class="btn btn-outline-primary" data-category="@category.Category_Id">@category.DeviceName</button>
+                                }
+                            </div>
+
+                            <!-- Danh sách thiết bị -->
+                            <div class="row">
+                                @foreach (var device in ViewBag.Devices)
+                                {
+                                    <div class="col-md-6 mb-4 device-item" data-category="@device.Category_Id">
+                                        <div class="card device-card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title">@device.Device_Code</h5>
+                                                <p class="card-text">
+                                                    <small class="text-muted">Loại: @device.Category.DeviceName</small><br>
+                                                    <small class="text-muted">Trạng thái: @device.Status</small>
+                                                </p>
+                                                <button class="btn btn-primary btn-sm select-device" 
+                                                        data-device-id="@device.Device_Id"
+                                                        data-device-code="@device.Device_Code">
+                                                    Chọn thiết bị
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form đặt chỗ -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm booking-form">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Đặt chỗ mượn thiết bị</h5>
+                            <form id="bookingForm" asp-action="CreateBooking" method="post">
+                                <input type="hidden" id="deviceId" name="deviceId" />
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Thiết bị đã chọn</label>
+                                    <input type="text" class="form-control" id="selectedDevice" readonly>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Ngày bắt đầu</label>
+                                    <input type="datetime-local" class="form-control" id="startDate" name="startDate" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Ngày kết thúc</label>
+                                    <input type="datetime-local" class="form-control" id="endDate" name="endDate" required>
+                                </div>
+
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary" id="submitBooking" disabled>
+                                        Đặt chỗ
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Danh sách phiếu mượn -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4">Danh sách phiếu mượn của bạn</h5>
+                            <div class="table-container">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã thiết bị</th>
+                                            <th>Loại thiết bị</th>
+                                            <th>Thời gian bắt đầu</th>
+                                            <th>Thời gian kết thúc</th>
+                                            <th>Trạng thái</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.UserBookings != null && ViewBag.UserBookings.Count > 0)
+                                        {
+                                            @foreach (var booking in ViewBag.UserBookings)
+                                            {
+                                                <tr>
+                                                    <td>@booking.Device.Device_Code</td>
+                                                    <td>@booking.Device.Category.DeviceName</td>
+                                                    <td>@booking.Reserve_Start.ToString("dd/MM/yyyy HH:mm")</td>
+                                                    <td>@booking.Reserve_End.ToString("dd/MM/yyyy HH:mm")</td>
+                                                    <td>
+                                                        @if (booking.Status == "pending")
+                                                        {
+                                                            <span class="badge bg-warning">Chờ duyệt</span>
+                                                        }
+                                                        else if (booking.Status == "confirmed")
+                                                        {
+                                                            <span class="badge bg-success">Đã duyệt</span>
+                                                        }
+                                                        else if (booking.Status == "cancelled")
+                                                        {
+                                                            <span class="badge bg-danger">Từ chối</span>
+                                                        }
+                                                        else if (booking.Status == "expried")
+                                                        {
+                                                            <span class="badge bg-info">Hoàn thành</span>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if (booking.Status == "pending")
+                                                        {
+                                                            <button class="btn btn-danger btn-sm cancel-booking" data-booking-id="@booking.Reservations_Id">
+                                                                Hủy đặt chỗ
+                                                            </button>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="6" class="text-center">Bạn chưa có phiếu mượn nào</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        if (typeof jQuery != 'undefined') {
+            // jQuery is loaded
+            $(document).ready(function() {
+                // Xử lý lọc theo danh mục
+                $('.category-filter .btn').click(function() {
+                    $('.category-filter .btn').removeClass('active');
+                    $(this).addClass('active');
+                    
+                    const category = $(this).data('category');
+                    if (category === 'all') {
+                        $('.device-item').show();
+                    } else {
+                        $('.device-item').hide();
+                        $(`.device-item[data-category="${category}"]`).show();
+                    }
+                });
+
+                // Xử lý chọn thiết bị
+                $('.select-device').click(function() {
+                    $('.device-card').removeClass('selected');
+                    $(this).closest('.device-card').addClass('selected');
+                    
+                    const deviceId = $(this).data('device-id');
+                    const deviceCode = $(this).data('device-code');
+                    
+                    $('#deviceId').val(deviceId);
+                    $('#selectedDevice').val(deviceCode);
+                    $('#submitBooking').prop('disabled', false);
+                });
+
+                // Kiểm tra tính khả dụng khi thay đổi ngày
+                $('#startDate, #endDate').change(function() {
+                    const deviceId = $('#deviceId').val();
+                    const startDate = $('#startDate').val();
+                    const endDate = $('#endDate').val();
+
+                    if (deviceId && startDate && endDate) {
+                        $.post('/Booking/CheckAvailability', {
+                            deviceId: deviceId,
+                            startDate: startDate,
+                            endDate: endDate
+                        }, function(response) {
+                            if (response.isAvailable) {
+                                $('#submitBooking').prop('disabled', false);
+                                $('#submitBooking').text('Đặt chỗ');
+                            } else {
+                                $('#submitBooking').prop('disabled', true);
+                                $('#submitBooking').text('Thiết bị không khả dụng');
+                            }
+                        });
+                    }
+                });
+
+                // Validate form trước khi submit
+                $('#bookingForm').submit(function(e) {
+                    e.preventDefault();
+                    
+                    const deviceId = $('#deviceId').val();
+                    const startDate = $('#startDate').val();
+                    const endDate = $('#endDate').val();
+                    
+                    if (!deviceId) {
+                        alert('Vui lòng chọn thiết bị!');
+                        return false;
+                    }
+                    
+                    if (!startDate || !endDate) {
+                        alert('Vui lòng chọn ngày bắt đầu và kết thúc!');
+                        return false;
+                    }
+                    
+                    const start = new Date(startDate);
+                    const end = new Date(endDate);
+                    
+                    // Kiểm tra thời gian kết thúc phải sau thời gian bắt đầu
+                    if (start >= end) {
+                        alert('Ngày kết thúc phải sau ngày bắt đầu!');
+                        return false;
+                    }
+                    
+                    // Kiểm tra khoảng thời gian phải ít nhất 2 tiếng
+                    const timeDiff = end - start;
+                    const twoHoursInMs = 2 * 60 * 60 * 1000; // 2 tiếng tính bằng milliseconds
+                    
+                    if (timeDiff < twoHoursInMs) {
+                        alert('Khoảng thời gian đặt thiết bị phải ít nhất 2 tiếng!');
+                        return false;
+                    }
+                    
+                    if (confirm('Bạn có chắc muốn đặt chỗ mượn thiết bị này?')) {
+                        $.post('/Booking/CreateBooking', {
+                            deviceId: deviceId,
+                            startDate: startDate,
+                            endDate: endDate
+                        }, function(response) {
+                            if (response.success) {
+                                alert(response.message);
+                                location.reload();
+                            } else {
+                                alert(response.message);
+                            }
+                        });
+                    }
+                });
+
+                // Xử lý hủy đặt chỗ
+                $('.cancel-booking').click(function() {
+                    const bookingId = $(this).data('booking-id');
+                    if (confirm('Bạn có chắc muốn hủy phiếu mượn này?')) {
+                        $.post('/Booking/CancelBooking', {
+                            bookingId: bookingId
+                        }, function(response) {
+                            if (response.success) {
+                                alert(response.message);
+                                location.reload();
+                            } else {
+                                alert(response.message);
+                            }
+                        });
+                    }
+                });
+            });
+        } else {
+            // jQuery is not loaded
+            alert('jQuery is not loaded! Please refresh the page.');
+        }
+    }
+</script> 

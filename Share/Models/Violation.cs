@@ -12,7 +12,7 @@ namespace Shared.Models
         public int UserId { get; set; }
         public int DeviceId { get; set; }
         public int borrowId { get; set; }
-        public int ReservationsId { get; set; }
+        public int? ReservationsId { get; set; }
         public string ViolationType { get; set; }
         public string ViolationDescription { get; set; }
         public DateTime ViolationDate { get; set; }

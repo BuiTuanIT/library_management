@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.ListReservation = new System.Windows.Forms.DataGridView();
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Reload = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
-            this.ListReservation = new System.Windows.Forms.DataGridView();
-            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListReservation)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -47,6 +47,30 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1013, 678);
             this.panel2.TabIndex = 5;
+            // 
+            // ListReservation
+            // 
+            this.ListReservation.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ListReservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListReservation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.chk});
+            this.ListReservation.Location = new System.Drawing.Point(3, 2);
+            this.ListReservation.Name = "ListReservation";
+            this.ListReservation.RowHeadersVisible = false;
+            this.ListReservation.RowHeadersWidth = 51;
+            this.ListReservation.RowTemplate.Height = 24;
+            this.ListReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListReservation.Size = new System.Drawing.Size(1007, 675);
+            this.ListReservation.TabIndex = 1;
+            this.ListReservation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListReservation_CellContentClick);
+            this.ListReservation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListReservation_CellDoubleClick);
+            // 
+            // chk
+            // 
+            this.chk.HeaderText = "Select";
+            this.chk.MinimumWidth = 6;
+            this.chk.Name = "chk";
+            this.chk.Width = 50;
             // 
             // panel1
             // 
@@ -93,29 +117,6 @@
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // ListReservation
-            // 
-            this.ListReservation.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ListReservation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListReservation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chk});
-            this.ListReservation.Location = new System.Drawing.Point(3, 2);
-            this.ListReservation.Name = "ListReservation";
-            this.ListReservation.RowHeadersVisible = false;
-            this.ListReservation.RowHeadersWidth = 51;
-            this.ListReservation.RowTemplate.Height = 24;
-            this.ListReservation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ListReservation.Size = new System.Drawing.Size(1007, 675);
-            this.ListReservation.TabIndex = 1;
-            this.ListReservation.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListReservation_CellDoubleClick);
-            // 
-            // chk
-            // 
-            this.chk.HeaderText = "Select";
-            this.chk.MinimumWidth = 6;
-            this.chk.Name = "chk";
-            this.chk.Width = 50;
-            // 
             // ReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -126,8 +127,8 @@
             this.Name = "ReservationForm";
             this.Text = "ReservationForm";
             this.panel2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListReservation)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

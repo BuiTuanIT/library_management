@@ -29,41 +29,47 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.ListBorrow = new System.Windows.Forms.DataGridView();
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Reload = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListBorrow)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.materialListView1);
+            this.panel2.Controls.Add(this.ListBorrow);
             this.panel2.Location = new System.Drawing.Point(5, 102);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1013, 678);
             this.panel2.TabIndex = 5;
             // 
-            // materialListView1
+            // ListBorrow
             // 
-            this.materialListView1.AutoSizeTable = false;
-            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Depth = 0;
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HideSelection = false;
-            this.materialListView1.Location = new System.Drawing.Point(10, 3);
-            this.materialListView1.MinimumSize = new System.Drawing.Size(200, 100);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(1000, 672);
-            this.materialListView1.TabIndex = 0;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.ListBorrow.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ListBorrow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListBorrow.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.chk});
+            this.ListBorrow.Location = new System.Drawing.Point(3, 2);
+            this.ListBorrow.Name = "ListBorrow";
+            this.ListBorrow.RowHeadersVisible = false;
+            this.ListBorrow.RowHeadersWidth = 51;
+            this.ListBorrow.RowTemplate.Height = 24;
+            this.ListBorrow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ListBorrow.Size = new System.Drawing.Size(1007, 675);
+            this.ListBorrow.TabIndex = 1;
+            this.ListBorrow.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListBorrow_CellDoubleClick);
+            // 
+            // chk
+            // 
+            this.chk.HeaderText = "Select";
+            this.chk.MinimumWidth = 6;
+            this.chk.Name = "chk";
+            this.chk.Width = 50;
             // 
             // panel1
             // 
@@ -85,6 +91,7 @@
             this.Reload.TabIndex = 3;
             this.Reload.Text = "Reload";
             this.Reload.UseVisualStyleBackColor = false;
+            this.Reload.Click += new System.EventHandler(this.BorrowForm_Load);
             // 
             // DeleteButton
             // 
@@ -96,6 +103,7 @@
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Xóa";
             this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // AddButton
             // 
@@ -107,6 +115,7 @@
             this.AddButton.TabIndex = 0;
             this.AddButton.Text = "Thêm";
             this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // BorrowForm
             // 
@@ -118,6 +127,7 @@
             this.Name = "BorrowForm";
             this.Text = "BorrowForm";
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ListBorrow)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -126,10 +136,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button Reload;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.DataGridView ListBorrow;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
     }
 }

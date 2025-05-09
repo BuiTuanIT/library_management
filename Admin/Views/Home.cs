@@ -57,11 +57,9 @@ namespace Admin.Views
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            contentPanel.Controls.Clear();
-
+            this.Close();
             // Relogin
             LoginForm loginForm = new LoginForm();
-            loginForm.FormBorderStyle = FormBorderStyle.FixedSingle;
             loginForm.ShowDialog();
 
             if (!loginForm.Logged)

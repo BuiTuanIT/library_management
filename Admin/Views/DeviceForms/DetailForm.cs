@@ -28,6 +28,7 @@ namespace Admin.Views.DeviceForms
         {
             InitializeComponent();
             LoadDeviceDetails();
+            cbbStatus.SelectedIndexChanged += CbbStatus_SelectedIndexChanged;
         }
 
         private void LoadDeviceDetails()
@@ -52,14 +53,7 @@ namespace Admin.Views.DeviceForms
                     txtID.Text = device.Device_Id.ToString();
                     txtCode.Text = device.Device_Code;
                     cbbStatus.SelectedItem = device.Status;
-                    if (device.Is_Borrowed == 1)
-                    {
-                        borrow.Checked = true;
-                    }
-                    else
-                    {
-                        borrow.Checked = false;
-                    }
+                    borrow.Checked = device.Status.ToLower() != "available";
                 }
             }
             else
@@ -67,10 +61,14 @@ namespace Admin.Views.DeviceForms
                 // Nếu là form thêm mới, set giá trị mặc định
                 cbbName.SelectedIndex = 0;
                 cbbStatus.SelectedIndex = 0;
-                borrow.Checked = false;
+                borrow.Checked = cbbStatus.Text.ToLower() != "available";
             }
         }
 
+        private void CbbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            borrow.Checked = cbbStatus.Text.ToLower() != "available";
+        }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
@@ -86,15 +84,15 @@ namespace Admin.Views.DeviceForms
                     Device_Code = txtCode.Text,
                     Status = cbbStatus.Text,
                     Category_Id = Convert.ToInt32(cbbName.SelectedValue),
-                    Is_Borrowed = borrow.Checked ? 1 : 0
+                    Is_Borrowed = cbbStatus.Text.ToLower() == "available" ? 0 : 1
                 };
                 if (deviceController.AddDevice(device))
                 {
-                    MessageBox.Show("Device added successfully.");
+                    MessageBox.Show("Thêm thiết bị thành công.");
                 }
                 else
                 {
-                    MessageBox.Show("Failed to add device.");
+                    MessageBox.Show("Thêm thiết bị thất bại.");
                 }
             }
             else
@@ -105,15 +103,15 @@ namespace Admin.Views.DeviceForms
                     Device_Code = txtCode.Text,
                     Status = cbbStatus.Text,
                     Category_Id = Convert.ToInt32(cbbName.SelectedValue),
-                    Is_Borrowed = borrow.Checked ? 1 : 0
+                    Is_Borrowed = cbbStatus.Text.ToLower() == "available" ? 0 : 1
                 };
                 if (deviceController.UpdateDevice(device))
                 {
-                    MessageBox.Show("Device updated successfully.");
+                    MessageBox.Show("Cập nhật thiết bị thành công.");
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update device.");
+                    MessageBox.Show("Cập nhật thiết bị thất bại.");
                 }
             }
             Close();

@@ -29,17 +29,48 @@ namespace Admin.Views
         {
             login();
         }
+
         private void login()
         {
-            // Check login
-            if (txtTaikhoan.Text == "admin" && txtMatkhau.Text == "admin")
+            try
             {
-                _logged = true;
-                this.Close();
+                // Check login
+                if (string.IsNullOrEmpty(txtTaikhoan.Text) || string.IsNullOrEmpty(txtMatkhau.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ tài khoản và mật khẩu!");
+                    return;
+                }
+
+                if (txtTaikhoan.Text.ToLower() == "admin" && txtMatkhau.Text.ToLower() == "admin")
+                {
+                    _logged = true;
+                    this.Hide(); // Ẩn form login
+
+                    // Show main form
+                    Home mainForm = new Home();
+                    mainForm.FormClosed += (s, args) => this.Close(); // Đóng form login khi form chính đóng
+                    mainForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Sai tài khoản hoặc mật khẩu!");
+                    txtMatkhau.Text = ""; // Xóa mật khẩu
+                    txtMatkhau.Focus(); // Focus vào ô mật khẩu
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Sai tài khoản hoặc mật khẩu");
+                MessageBox.Show("Lỗi đăng nhập: " + ex.Message);
+            }
+        }
+
+        // Thêm sự kiện nhấn Enter để đăng nhập
+        private void txtMatkhau_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Ngăn chặn tiếng "beep"
+                login();
             }
         }
     }

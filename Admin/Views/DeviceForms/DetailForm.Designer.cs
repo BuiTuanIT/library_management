@@ -104,6 +104,7 @@
             this.borrow.MouseLocation = new System.Drawing.Point(-1, -1);
             this.borrow.MouseState = MaterialSkin.MouseState.HOVER;
             this.borrow.Name = "borrow";
+            this.borrow.ReadOnly = true;
             this.borrow.Ripple = true;
             this.borrow.Size = new System.Drawing.Size(58, 37);
             this.borrow.TabIndex = 9;
@@ -145,6 +146,7 @@
             this.cbbStatus.Size = new System.Drawing.Size(310, 49);
             this.cbbStatus.StartIndex = 0;
             this.cbbStatus.TabIndex = 7;
+            this.cbbStatus.SelectedIndexChanged += new System.EventHandler(this.CbbStatus_SelectedIndexChanged);
             // 
             // txtCode
             // 

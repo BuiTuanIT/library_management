@@ -33,18 +33,18 @@ namespace Admin.Controller
             return reservations;
         }
 
-        public List<Reservations> GetReservationsById(int Id)
+        public Reservations GetReservationsById(int id)
         {
             string query = "SELECT * FROM reservations WHERE reservations_id = @reservations_id";
             MySqlParameter[] parameters = new MySqlParameter[]
             {
-                new MySqlParameter("@reservation_id", Id)
+                new MySqlParameter("@reservations_id", id)
             };
             DataTable dt = db.ExecuteQuery(query, parameters);
-            List<Reservations> reservations = new List<Reservations>();
-            foreach (DataRow row in dt.Rows)
+            if(dt.Rows.Count > 0)
             {
-                reservations.Add(new Reservations()
+                DataRow row = dt.Rows[0];
+                return new Reservations()
                 {
                     Id = Convert.ToInt32(row["reservations_id"]),
                     Device_Id = Convert.ToInt32(row["device_id"]),
@@ -52,9 +52,9 @@ namespace Admin.Controller
                     Start_Date = Convert.ToDateTime(row["reserve_start"]),
                     End_Date = Convert.ToDateTime(row["reserve_end"]),
                     Status = row["status"].ToString()
-                });
+                };
             }
-            return reservations;
+            return null;
         }
 
         public bool AddReservation(Reservations reservation)
@@ -92,6 +92,32 @@ namespace Admin.Controller
                 new MySqlParameter("@id", id)
             };
             return db.ExecuteNonQuery(query, parameters);
+        }
+
+        public List<Reservations> GetReservationsByDeviceAndUser(int deviceId, int userId, string status)
+        {
+            string query = "SELECT * FROM reservations WHERE device_id = @deviceId AND user_id = @userId AND status = @status";
+            MySqlParameter[] parameters = new MySqlParameter[]
+            {
+                new MySqlParameter("@deviceId", deviceId),
+                new MySqlParameter("@userId", userId),
+                new MySqlParameter("@status", status)
+            };
+            DataTable dt = db.ExecuteQuery(query, parameters);
+            List<Reservations> reservations = new List<Reservations>();
+            foreach (DataRow row in dt.Rows)
+            {
+                reservations.Add(new Reservations()
+                {
+                    Id = Convert.ToInt32(row["reservations_id"]),
+                    Device_Id = Convert.ToInt32(row["device_id"]),
+                    User_Id = Convert.ToInt32(row["user_id"]),
+                    Start_Date = Convert.ToDateTime(row["reserve_start"]),
+                    End_Date = Convert.ToDateTime(row["reserve_end"]),
+                    Status = row["status"].ToString()
+                });
+            }
+            return reservations;
         }
     }
 }

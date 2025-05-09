@@ -123,7 +123,6 @@ namespace Admin.Views
             {
                 var worksheet = workbook.Worksheet(1); // sheet đầu tiên
                 var rows = worksheet.RangeUsed().RowsUsed();
-                int hehe = 0;
 
                 bool isFirst = true;
                 foreach (var row in rows)

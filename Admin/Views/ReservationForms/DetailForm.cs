@@ -45,7 +45,7 @@ namespace Admin.Views.ReservationForms
 
             if (idReservation > 0)
             {
-                Reservations reservation = reservationController.GetReservationsById(idReservation).FirstOrDefault();
+                Reservations reservation = reservationController.GetReservationsById(idReservation);
                 if (reservation != null)
                 {
                     // Set lại giá trị được chọn

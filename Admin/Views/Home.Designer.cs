@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.CheckinButton = new MaterialSkin.Controls.MaterialButton();
             this.logoutButton = new MaterialSkin.Controls.MaterialButton();
             this.buttonXLVP = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.contentPanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,20 @@
             this.panel1.Size = new System.Drawing.Size(263, 797);
             this.panel1.TabIndex = 0;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(2, 307);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(258, 61);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Quản lý loại thiết bị";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // CheckinButton
             // 
             this.CheckinButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -69,7 +83,7 @@
             this.CheckinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckinButton.HighEmphasis = true;
             this.CheckinButton.Icon = null;
-            this.CheckinButton.Location = new System.Drawing.Point(82, 669);
+            this.CheckinButton.Location = new System.Drawing.Point(80, 678);
             this.CheckinButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.CheckinButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.CheckinButton.Name = "CheckinButton";
@@ -136,7 +150,7 @@
             this.buttonQLdatcho.Cursor = System.Windows.Forms.Cursors.Default;
             this.buttonQLdatcho.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonQLdatcho.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonQLdatcho.Location = new System.Drawing.Point(0, 307);
+            this.buttonQLdatcho.Location = new System.Drawing.Point(3, 508);
             this.buttonQLdatcho.Name = "buttonQLdatcho";
             this.buttonQLdatcho.Size = new System.Drawing.Size(258, 61);
             this.buttonQLdatcho.TabIndex = 3;
@@ -196,20 +210,6 @@
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Size = new System.Drawing.Size(1040, 797);
             this.contentPanel.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(0, 508);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(258, 61);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Quản lý loại thiết bị";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Home
             // 

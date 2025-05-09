@@ -106,5 +106,24 @@ namespace Admin.Controller
             };
             return db.ExecuteNonQuery(query, parameters);
         }
+
+        public List<Device> GetDeviceNotBorrow()
+        {
+            string query = "SELECT * FROM device WHERE is_borrow = 0";
+
+            DataTable dt = db.ExecuteQuery(query);
+            List<Device> devices = new List<Device>();
+            foreach (DataRow row in dt.Rows) {
+                devices.Add(new Device
+                {
+                    Device_Id = Convert.ToInt32(row["device_id"]),
+                    Category_Id = Convert.ToInt32(row["category_id"]),
+                    Device_Code = row["device_code"].ToString(),
+                    Status = row["status"].ToString(),
+                    Is_Borrowed = Convert.ToInt32(row["is_borrow"])
+                });
+            }
+            return devices;
+        }
     }
 }

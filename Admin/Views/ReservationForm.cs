@@ -120,5 +120,10 @@ namespace Admin.Views
         {
             RefreshData();
         }
+
+        private void ListReservation_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

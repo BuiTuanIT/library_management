@@ -208,6 +208,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\BorrowController.cs" />
     <Compile Include="Controller\CategoryDeviceController.cs" />
     <Compile Include="Controller\CheckinController.cs" />
     <Compile Include="Controller\DatabaseHelper.cs" />
@@ -222,6 +223,12 @@
     </Compile>
     <Compile Include="Views\BorrowForm.Designer.cs">
       <DependentUpon>BorrowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BorrowForms\DetailForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BorrowForms\DetailForms.Designer.cs">
+      <DependentUpon>DetailForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\CategoryForms\DetailForm.cs">
       <SubType>Form</SubType>
@@ -324,6 +331,9 @@
     </Compile>
     <EmbeddedResource Include="Views\BorrowForm.resx">
       <DependentUpon>BorrowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BorrowForms\DetailForms.resx">
+      <DependentUpon>DetailForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CategoryForms\DetailForm.resx">
       <DependentUpon>DetailForm.cs</DependentUpon>

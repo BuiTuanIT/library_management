@@ -125,5 +125,20 @@ namespace Admin.Controller
             }
             return devices;
         }
+
+        public DataTable GetCurrentlyBorrowedDevices()
+        {
+            string query = @"
+                SELECT 
+                    dc.devicename,
+                    COUNT(d.device_id) as total_borrowed
+                FROM device d
+                JOIN device_category dc ON d.category_id = dc.category_id
+                WHERE d.status = 'available'
+                GROUP BY dc.devicename
+                ORDER BY total_borrowed DESC";
+
+            return db.ExecuteQuery(query);
+        }
     }
 }

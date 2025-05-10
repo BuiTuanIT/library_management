@@ -196,6 +196,13 @@
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35\System.Web.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35\System.Windows.Forms.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -203,7 +210,10 @@
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Chart.Controls.4.7.2046\lib\net35\System.Windows.Forms.DataVisualization.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
@@ -223,6 +233,12 @@
     </Compile>
     <Compile Include="Views\BorrowForm.Designer.cs">
       <DependentUpon>BorrowForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BorrowForms\borrowdevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BorrowForms\borrowdevice.Designer.cs">
+      <DependentUpon>borrowdevice.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\BorrowForms\DetailForms.cs">
       <SubType>Form</SubType>
@@ -253,6 +269,12 @@
     </Compile>
     <Compile Include="Views\DeviceForm.Designer.cs">
       <DependentUpon>DeviceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceForms\available.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DeviceForms\available.Designer.cs">
+      <DependentUpon>available.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DeviceForms\DeleteWithCondition.cs">
       <SubType>Form</SubType>
@@ -290,6 +312,12 @@
     <Compile Include="Views\ReservationForms\DetailForm.Designer.cs">
       <DependentUpon>DetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Thongkecheckin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Thongkecheckin.Designer.cs">
+      <DependentUpon>Thongkecheckin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +348,12 @@
     <Compile Include="Views\ViolationForms\DetailForm.Designer.cs">
       <DependentUpon>DetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViolationForms\statistical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViolationForms\statistical.Designer.cs">
+      <DependentUpon>statistical.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -331,6 +365,9 @@
     </Compile>
     <EmbeddedResource Include="Views\BorrowForm.resx">
       <DependentUpon>BorrowForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BorrowForms\borrowdevice.resx">
+      <DependentUpon>borrowdevice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\BorrowForms\DetailForms.resx">
       <DependentUpon>DetailForms.cs</DependentUpon>
@@ -346,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DeviceForm.resx">
       <DependentUpon>DeviceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DeviceForms\available.resx">
+      <DependentUpon>available.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DeviceForms\DeleteWithCondition.resx">
       <DependentUpon>DeleteWithCondition.cs</DependentUpon>
@@ -365,6 +405,9 @@
     <EmbeddedResource Include="Views\ReservationForms\DetailForm.resx">
       <DependentUpon>DetailForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Thongkecheckin.resx">
+      <DependentUpon>Thongkecheckin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ViolationForms\DetailForm.resx">
       <DependentUpon>DetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViolationForms\statistical.resx">
+      <DependentUpon>statistical.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

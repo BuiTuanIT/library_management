@@ -150,6 +150,13 @@ namespace Admin.Views
             DeleteWithCondition deleteWithCondition = new DeleteWithCondition();
             deleteWithCondition.ShowDialog();
             RefreshData();
-        }        
+        }
+
+        private void available_Click(object sender, EventArgs e)
+        {
+            available availableForm = new available();
+            availableForm.ShowDialog();
+            RefreshData();
+        }
     }
 }

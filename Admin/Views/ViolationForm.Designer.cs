@@ -35,6 +35,7 @@
             this.Reload = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
+            this.statistical = new MaterialSkin.Controls.MaterialButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListViolation)).BeginInit();
             this.panel1.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.statistical);
             this.panel1.Controls.Add(this.Reload);
             this.panel1.Controls.Add(this.DeleteButton);
             this.panel1.Controls.Add(this.AddButton);
@@ -116,6 +118,26 @@
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // statistical
+            // 
+            this.statistical.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.statistical.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.statistical.Depth = 0;
+            this.statistical.HighEmphasis = true;
+            this.statistical.Icon = null;
+            this.statistical.Location = new System.Drawing.Point(781, 25);
+            this.statistical.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.statistical.MouseState = MaterialSkin.MouseState.HOVER;
+            this.statistical.Name = "statistical";
+            this.statistical.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.statistical.Size = new System.Drawing.Size(158, 36);
+            this.statistical.TabIndex = 4;
+            this.statistical.Text = "Thống kê vi phạm";
+            this.statistical.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.statistical.UseAccentColor = false;
+            this.statistical.UseVisualStyleBackColor = true;
+            this.statistical.Click += new System.EventHandler(this.statistical_Click);
+            // 
             // ViolationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -128,6 +150,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListViolation)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -141,5 +164,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.DataGridView ListViolation;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
+        private MaterialSkin.Controls.MaterialButton statistical;
     }
 }

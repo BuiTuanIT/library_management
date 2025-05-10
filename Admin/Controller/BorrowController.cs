@@ -135,5 +135,28 @@ namespace Admin.Controller
             dbHelper.ExecuteNonQuery(query, parameters);
             return true;
         }
+
+        public DataTable GetBorrowedDevicesByDate(DateTime startDate, DateTime endDate)
+        {
+            string query = @"
+                SELECT 
+                    DATE(br.borrow_date) as borrow_date,
+                    COUNT(br.borrow_id) as total_borrows,
+                    GROUP_CONCAT(DISTINCT dc.devicename) as device_names
+                FROM borrowrecords br
+                JOIN device d ON br.device_id = d.device_id
+                JOIN device_category dc ON d.category_id = dc.category_id
+                WHERE DATE(br.borrow_date) BETWEEN DATE(@start_date) AND DATE(@end_date)
+                GROUP BY DATE(br.borrow_date)
+                ORDER BY borrow_date";
+
+            MySqlParameter[] parameters = new MySqlParameter[]
+            {
+                new MySqlParameter("@start_date", startDate.Date),
+                new MySqlParameter("@end_date", endDate.Date)
+            };
+
+            return dbHelper.ExecuteQuery(query, parameters);
+        }
     }
 }

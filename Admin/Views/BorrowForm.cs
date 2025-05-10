@@ -99,5 +99,11 @@ namespace Admin.Views
                 }
             }
         }
+
+        private void inUse_Click(object sender, EventArgs e)
+        {
+            borrowdevice borrowdevice = new borrowdevice();
+            borrowdevice.ShowDialog();
+        }
     }
 }

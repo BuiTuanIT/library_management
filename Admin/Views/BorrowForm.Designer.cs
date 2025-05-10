@@ -35,6 +35,7 @@
             this.Reload = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
+            this.inUse = new MaterialSkin.Controls.MaterialButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListBorrow)).BeginInit();
             this.panel1.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.inUse);
             this.panel1.Controls.Add(this.Reload);
             this.panel1.Controls.Add(this.DeleteButton);
             this.panel1.Controls.Add(this.AddButton);
@@ -117,6 +119,26 @@
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
+            // inUse
+            // 
+            this.inUse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.inUse.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.inUse.Depth = 0;
+            this.inUse.HighEmphasis = true;
+            this.inUse.Icon = null;
+            this.inUse.Location = new System.Drawing.Point(696, 25);
+            this.inUse.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.inUse.MouseState = MaterialSkin.MouseState.HOVER;
+            this.inUse.Name = "inUse";
+            this.inUse.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.inUse.Size = new System.Drawing.Size(214, 36);
+            this.inUse.TabIndex = 4;
+            this.inUse.Text = "thiết bị đang được mượn";
+            this.inUse.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.inUse.UseAccentColor = false;
+            this.inUse.UseVisualStyleBackColor = true;
+            this.inUse.Click += new System.EventHandler(this.inUse_Click);
+            // 
             // BorrowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -129,6 +151,7 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ListBorrow)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -142,5 +165,6 @@
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.DataGridView ListBorrow;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
+        private MaterialSkin.Controls.MaterialButton inUse;
     }
 }

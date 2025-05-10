@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 
 namespace Admin.Controller
 {
@@ -83,5 +84,24 @@ namespace Admin.Controller
             return true;
         }
 
+        public DataTable GetWeeklyCheckinStats(DateTime startDate, DateTime endDate)
+        {
+            string query = @"
+                SELECT 
+                    DATE(access_time) as checkin_date,
+                    COUNT(DISTINCT user_id) as total_checkins
+                FROM studyareaaccesslogs 
+                WHERE access_time BETWEEN @start_date AND @end_date
+                GROUP BY DATE(access_time)
+                ORDER BY checkin_date";
+
+            MySqlParameter[] parameters = new MySqlParameter[]
+            {
+                new MySqlParameter("@start_date", startDate),
+                new MySqlParameter("@end_date", endDate)
+            };
+
+            return db.ExecuteQuery(query, parameters);
+        }
     }
 }

@@ -23,20 +23,16 @@ namespace Admin.Views
             if (type == null) return;
 
             if (form == null || form.GetType() != type)
+            {
                 form = (Form)Activator.CreateInstance(type, args);
-
-            form.Dock = DockStyle.None; // Tạm thời không dùng Dock để kiểm soát kích thước
-            form.TopLevel = false;
-            form.TopMost = true;
-            form.AutoScroll = true;
-            form.FormBorderStyle = FormBorderStyle.None;
-
-            form.Size = contentPanel.ClientSize;
-            form.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                form.FormBorderStyle = FormBorderStyle.None;
+                form.TopLevel = false;
+                form.Dock = DockStyle.Fill;
+                form.AutoScroll = true;
+            }
 
             contentPanel.Controls.Clear();
             contentPanel.Controls.Add(form);
-
             form.Show();
         }
 
@@ -100,6 +96,11 @@ namespace Admin.Views
         private void button2_Click(object sender, EventArgs e)
         {
             SetContentForm(typeof(DeviceCategoryForm));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SetContentForm(typeof(Thongkecheckin));
         }
     }
 }

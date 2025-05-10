@@ -142,5 +142,21 @@ namespace Admin.Controller
             };
             return db.ExecuteNonQuery(query, parameters);
         }
+
+        public DataTable GetViolationStatistics()
+        {
+            string query = @"
+                SELECT 
+                    CASE 
+                        WHEN status = 'resolved' THEN 'Đã xử lý'
+                        ELSE 'Đang xử lý'
+                    END as status,
+                    COUNT(*) as total_violations,
+                    SUM(CASE WHEN status = 'resolved' THEN fine_amount ELSE 0 END) as total_fines
+                FROM violations 
+                GROUP BY status";
+
+            return db.ExecuteQuery(query);
+        }
     }
 }

@@ -106,5 +106,11 @@ namespace Admin.Views
                 }
             }
         }
+
+        private void statistical_Click(object sender, EventArgs e)
+        {
+            statistical statisticalForm = new statistical();
+            statisticalForm.ShowDialog();
+        }
     }
 }

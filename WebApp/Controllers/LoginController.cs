@@ -29,6 +29,13 @@ namespace WebApp.Controllers
 
                 if (user != null)
                 {
+                    // Kiểm tra trạng thái tài khoản
+                    if (user.is_active == 0)
+                    {
+                        TempData["ErrorMsg"] = "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.";
+                        return View(model);
+                    }
+
                     // Đăng nhập thành công
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("email", user.email ?? "");

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
-using Shared.Models;
+
 
 namespace WebApp
 {
@@ -15,9 +15,10 @@ namespace WebApp
         public DbSet<User> Users { get; set; }
         public DbSet<Device_Category> Device_Category { get; set; }
         public DbSet<Device> Device { get; set; }
+        public DbSet<BorrowRecord> BorrowRecords { get; set; }
         public DbSet<Reservations> Reservations { get; set; }
         public DbSet<StudyAreaAccessLogs> StudyAreaAccessLogs { get; set; }
-
+        public DbSet<Violation> Violations { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -33,5 +34,6 @@ namespace WebApp
                 .WithMany()
                 .HasForeignKey(l => l.UserId);
         }
+
     }
 }

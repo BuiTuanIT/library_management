@@ -40,6 +40,7 @@ namespace WebApp.Controllers
                     HttpContext.Session.SetString("UserName", user.UserName);
                     HttpContext.Session.SetString("email", user.email ?? "");
                     HttpContext.Session.SetInt32("UserId", user.UserId);
+                    HttpContext.Session.SetString("student_code", user.student_code);
 
                     TempData["SuccessMsg"] = "Đăng nhập thành công!";
                     return RedirectToAction("Index", "Home");

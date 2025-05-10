@@ -35,7 +35,18 @@ namespace WebApp.Controllers
                 .OrderByDescending(log => log.AccessTime)
                 .ToList();
 
-            return View(accessLogs);
+            // Lấy lịch sử mượn thiết bị của user
+            var borrowedDevices = _context.BorrowRecords
+                .Include(b => b.Device)
+                .Where(b => b.UserId == user.UserId)
+                .OrderByDescending(b => b.BorrowDate)
+                .ToList();
+
+            // Truyền cả 2 danh sách vào ViewBag
+            ViewBag.AccessLogs = accessLogs;
+            ViewBag.BorrowedDevices = borrowedDevices;
+
+            return View();
         }
 
         [HttpPost]

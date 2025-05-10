@@ -12,17 +12,6 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Test jQuery -->
-<script>
-    window.onload = function() {
-        if (typeof jQuery != 'undefined') {
-            alert('jQuery is loaded!');
-        } else {
-            alert('jQuery is NOT loaded!');
-        }
-    }
-</script>
-
 <style>
     body {
         background-color: #f8f9fa; /* Màu nền nhẹ */
@@ -277,132 +266,125 @@
 </div>
 
 <script>
-    window.onload = function() {
-        if (typeof jQuery != 'undefined') {
-            // jQuery is loaded
-            $(document).ready(function() {
-                // Xử lý lọc theo danh mục
-                $('.category-filter .btn').click(function() {
-                    $('.category-filter .btn').removeClass('active');
-                    $(this).addClass('active');
-                    
-                    const category = $(this).data('category');
-                    if (category === 'all') {
-                        $('.device-item').show();
-                    } else {
-                        $('.device-item').hide();
-                        $(`.device-item[data-category="${category}"]`).show();
-                    }
-                });
+    $(document).ready(function() {
+        // Hàm kiểm tra tính khả dụng của thiết bị
+        function checkDeviceAvailability(deviceId, startDate, endDate, button) {
+            if (!deviceId || !startDate || !endDate) {
+                button.prop('disabled', true);
+                button.text('Chọn thiết bị');
+                return;
+            }
 
-                // Xử lý chọn thiết bị
-                $('.select-device').click(function() {
-                    $('.device-card').removeClass('selected');
-                    $(this).closest('.device-card').addClass('selected');
-                    
-                    const deviceId = $(this).data('device-id');
-                    const deviceCode = $(this).data('device-code');
-                    
-                    $('#deviceId').val(deviceId);
-                    $('#selectedDevice').val(deviceCode);
-                    $('#submitBooking').prop('disabled', false);
-                });
-
-                // Kiểm tra tính khả dụng khi thay đổi ngày
-                $('#startDate, #endDate').change(function() {
-                    const deviceId = $('#deviceId').val();
-                    const startDate = $('#startDate').val();
-                    const endDate = $('#endDate').val();
-
-                    if (deviceId && startDate && endDate) {
-                        $.post('/Booking/CheckAvailability', {
-                            deviceId: deviceId,
-                            startDate: startDate,
-                            endDate: endDate
-                        }, function(response) {
-                            if (response.isAvailable) {
-                                $('#submitBooking').prop('disabled', false);
-                                $('#submitBooking').text('Đặt chỗ');
-                            } else {
-                                $('#submitBooking').prop('disabled', true);
-                                $('#submitBooking').text('Thiết bị không khả dụng');
-                            }
-                        });
-                    }
-                });
-
-                // Validate form trước khi submit
-                $('#bookingForm').submit(function(e) {
-                    e.preventDefault();
-                    
-                    const deviceId = $('#deviceId').val();
-                    const startDate = $('#startDate').val();
-                    const endDate = $('#endDate').val();
-                    
-                    if (!deviceId) {
-                        alert('Vui lòng chọn thiết bị!');
-                        return false;
-                    }
-                    
-                    if (!startDate || !endDate) {
-                        alert('Vui lòng chọn ngày bắt đầu và kết thúc!');
-                        return false;
-                    }
-                    
-                    const start = new Date(startDate);
-                    const end = new Date(endDate);
-                    
-                    // Kiểm tra thời gian kết thúc phải sau thời gian bắt đầu
-                    if (start >= end) {
-                        alert('Ngày kết thúc phải sau ngày bắt đầu!');
-                        return false;
-                    }
-                    
-                    // Kiểm tra khoảng thời gian phải ít nhất 2 tiếng
-                    const timeDiff = end - start;
-                    const twoHoursInMs = 2 * 60 * 60 * 1000; // 2 tiếng tính bằng milliseconds
-                    
-                    if (timeDiff < twoHoursInMs) {
-                        alert('Khoảng thời gian đặt thiết bị phải ít nhất 2 tiếng!');
-                        return false;
-                    }
-                    
-                    if (confirm('Bạn có chắc muốn đặt chỗ mượn thiết bị này?')) {
-                        $.post('/Booking/CreateBooking', {
-                            deviceId: deviceId,
-                            startDate: startDate,
-                            endDate: endDate
-                        }, function(response) {
-                            if (response.success) {
-                                alert(response.message);
-                                location.reload();
-                            } else {
-                                alert(response.message);
-                            }
-                        });
-                    }
-                });
-
-                // Xử lý hủy đặt chỗ
-                $('.cancel-booking').click(function() {
-                    const bookingId = $(this).data('booking-id');
-                    if (confirm('Bạn có chắc muốn hủy phiếu mượn này?')) {
-                        $.post('/Booking/CancelBooking', {
-                            bookingId: bookingId
-                        }, function(response) {
-                            if (response.success) {
-                                alert(response.message);
-                                location.reload();
-                            } else {
-                                alert(response.message);
-                            }
-                        });
-                    }
-                });
+            $.post('/Booking/CheckAvailability', {
+                deviceId: deviceId,
+                startDate: startDate,
+                endDate: endDate
+            }, function(response) {
+                if (response.isAvailable) {
+                    button.prop('disabled', false);
+                    button.text('Đặt chỗ');
+                } else {
+                    button.prop('disabled', true);
+                    button.text('Thiết bị không khả dụng');
+                }
             });
-        } else {
-            // jQuery is not loaded
-            alert('jQuery is not loaded! Please refresh the page.');
         }
-    }
+
+        // Xử lý chọn thiết bị
+        $('.select-device').click(function() {
+            // Bỏ chọn tất cả các thiết bị
+            $('.device-card').removeClass('selected');
+            
+            // Chọn thiết bị được click
+            $(this).closest('.device-card').addClass('selected');
+            
+            // Cập nhật thông tin thiết bị đã chọn
+            var deviceId = $(this).data('device-id');
+            var deviceCode = $(this).data('device-code');
+            $('#deviceId').val(deviceId);
+            $('#selectedDevice').val(deviceCode);
+            
+            // Kiểm tra tính khả dụng khi chọn thiết bị
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+            checkDeviceAvailability(deviceId, startDate, endDate, $('#submitBooking'));
+        });
+
+        // Kiểm tra tính khả dụng khi thay đổi ngày
+        $('#startDate, #endDate').change(function() {
+            var deviceId = $('#deviceId').val();
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+            checkDeviceAvailability(deviceId, startDate, endDate, $('#submitBooking'));
+        });
+
+        // Xử lý lọc theo danh mục
+        $('.category-filter .btn').click(function() {
+            $('.category-filter .btn').removeClass('active');
+            $(this).addClass('active');
+            
+            var category = $(this).data('category');
+            if (category === 'all') {
+                $('.device-item').show();
+            } else {
+                $('.device-item').hide();
+                $('.device-item[data-category="' + category + '"]').show();
+            }
+        });
+
+        // Xử lý form submit
+        $('#bookingForm').submit(function(e) {
+            e.preventDefault();
+            
+            var deviceId = $('#deviceId').val();
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+            
+            // Kiểm tra tính khả dụng
+            $.post('/Booking/CheckAvailability', {
+                deviceId: deviceId,
+                startDate: startDate,
+                endDate: endDate
+            }, function(response) {
+                if (response.isAvailable) {
+                    // Nếu khả dụng, tạo đơn đặt
+                    $.post('/Booking/CreateBooking', {
+                        deviceId: deviceId,
+                        startDate: startDate,
+                        endDate: endDate
+                    }, function(response) {
+                        if (response.success) {
+                            alert(response.message);
+                            location.reload();
+                        } else {
+                            alert(response.message);
+                        }
+                    });
+                } else {
+                    alert('Thiết bị không khả dụng trong khoảng thời gian này');
+                }
+            });
+        });
+
+        // Xử lý hủy đặt chỗ
+        $('.cancel-booking').click(function() {
+            if (confirm('Bạn có chắc muốn hủy đặt chỗ này?')) {
+                var bookingId = $(this).data('booking-id');
+                $.post('/Booking/CancelBooking', {
+                    bookingId: bookingId
+                }, function(response) {
+                    if (response.success) {
+                        alert(response.message);
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                });
+            }
+        });
+
+        // Khởi tạo trạng thái ban đầu của nút đặt chỗ
+        $('#submitBooking').prop('disabled', true);
+        $('#submitBooking').text('Chọn thiết bị');
+    });
 </script> 

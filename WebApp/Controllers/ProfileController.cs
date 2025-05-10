@@ -3,6 +3,7 @@ using WebApp.Models;
 using WebApp;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http; // Đảm bảo có thư viện này để dùng Session
 
 namespace WebApp.Controllers
 {
@@ -32,66 +33,41 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Login");
             }
 
-            // Lấy lịch sử check-in của user
             var accessLogs = _context.StudyAreaAccessLogs
                 .Where(log => log.UserId == user.UserId)
                 .OrderByDescending(log => log.AccessTime)
                 .ToList();
 
             ViewBag.AccessLogs = accessLogs;
+            _logger.LogInformation("User email: " + user.email); // Kiểm tra giá trị email
             return View(user);
         }
 
         [HttpPost]
-        public IActionResult Update(User model)
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int UserId, string email, string phone, string student_code, DateTime? Birthday, string Sex)
         {
-            _logger.LogInformation("Bắt đầu cập nhật thông tin user");
-            
-            if (ModelState.IsValid)
+            // Lấy user theo chính xác UserId
+            var user = _context.Users.Find(UserId);
+            if (user == null)
             {
-                _logger.LogInformation("ModelState hợp lệ");
-                var userName = HttpContext.Session.GetString("UserName");
-                _logger.LogInformation($"UserName từ session: {userName}");
-                
-                var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
-                if (user != null)
-                {
-                    _logger.LogInformation("Tìm thấy user trong database");
-                    // Cập nhật thông tin
-                    user.email = model.email;
-                    user.phone = model.phone;
-                    user.Birthday = model.Birthday;
-                    user.Sex = model.Sex;
-                    user.student_code = model.student_code;
+                TempData["ErrorMsg"] = "Không tìm thấy người dùng!";
+                return RedirectToAction("Index");
+            }
 
-                    try 
-                    {
-                        _context.SaveChanges();
-                        _logger.LogInformation("Lưu thông tin thành công");
-                        TempData["SuccessMsg"] = "Cập nhật thông tin thành công!";
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError($"Lỗi khi lưu: {ex.Message}");
-                        TempData["ErrorMsg"] = "Có lỗi xảy ra khi cập nhật: " + ex.Message;
-                    }
-                }
-                else
-                {
-                    _logger.LogWarning("Không tìm thấy user trong database");
-                    TempData["ErrorMsg"] = "Không tìm thấy thông tin người dùng!";
-                }
-            }
-            else
-            {
-                var errors = string.Join("; ", ModelState.Values
-                    .SelectMany(v => v.Errors)
-                    .Select(e => e.ErrorMessage));
-                _logger.LogWarning($"ModelState không hợp lệ: {errors}");
-                TempData["ErrorMsg"] = "Dữ liệu không hợp lệ: " + errors;
-            }
+            // Cập nhật các trường
+            user.email = email;
+            user.phone = phone;
+            user.student_code = student_code;
+            user.Birthday = Birthday;
+            user.Sex = Sex;
+
+            // Lưu thay đổi
+            _context.SaveChanges();
+            TempData["SuccessMsg"] = "Cập nhật thành công!";
             return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public IActionResult CheckIn()
@@ -103,22 +79,23 @@ namespace WebApp.Controllers
             }
 
             var user = _context.Users.FirstOrDefault(u => u.UserName == userName);
-            if (user != null)
+            if (user == null)
             {
-                // Tạo log mới
-                var log = new StudyAreaAccessLogs
-                {
-                    UserId = user.UserId,
-                    AccessTime = DateTime.Now
-                };
-
-                _context.StudyAreaAccessLogs.Add(log);
-                _context.SaveChanges();
-
-                TempData["SuccessMsg"] = "Check-in thành công!";
+                TempData["ErrorMsg"] = "Không tìm thấy người dùng để check-in!";
+                return RedirectToAction("Index");
             }
 
+            var log = new StudyAreaAccessLogs
+            {
+                UserId = user.UserId,
+                AccessTime = DateTime.Now
+            };
+
+            _context.StudyAreaAccessLogs.Add(log);
+            _context.SaveChanges();
+
+            TempData["SuccessMsg"] = "Check-in thành công!";
             return RedirectToAction("Index");
         }
     }
-} 
+}

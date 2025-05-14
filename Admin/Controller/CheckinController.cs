@@ -51,7 +51,7 @@ namespace Admin.Controller
                 new MySqlParameter("@active", 0)
             };
             object accountStatus = db.ExecuteScalar(accountStatusQuery, accountStatusParams);
-            if (accountStatus != null && Convert.ToInt32(accountStatus) == 0)
+            if (accountStatus != null && Convert.ToInt32(accountStatus) > 0)
             {
                 MessageBox.Show("Tài khoản sinh viên đã bị khóa!");
                 return false;

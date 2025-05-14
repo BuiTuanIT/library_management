@@ -53,13 +53,15 @@ namespace Admin.Views
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            // Relogin
+            // Show login form first
             LoginForm loginForm = new LoginForm();
+            loginForm.FormClosed += (s, args) => {
+                if (!loginForm.Logged)
+                {
+                    this.Close();
+                }
+            };
             loginForm.ShowDialog();
-
-            if (!loginForm.Logged)
-                Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

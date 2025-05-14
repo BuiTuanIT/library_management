@@ -118,9 +118,11 @@
             // 
             // dayend
             // 
-            this.dayend.Location = new System.Drawing.Point(190, 356);
+            this.dayend.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dayend.Location = new System.Drawing.Point(190, 339);
+            this.dayend.MinimumSize = new System.Drawing.Size(4, 40);
             this.dayend.Name = "dayend";
-            this.dayend.Size = new System.Drawing.Size(310, 22);
+            this.dayend.Size = new System.Drawing.Size(310, 40);
             this.dayend.TabIndex = 17;
             // 
             // label5
@@ -145,9 +147,11 @@
             // 
             // daystart
             // 
-            this.daystart.Location = new System.Drawing.Point(190, 291);
+            this.daystart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.daystart.Location = new System.Drawing.Point(190, 273);
+            this.daystart.MinimumSize = new System.Drawing.Size(4, 40);
             this.daystart.Name = "daystart";
-            this.daystart.Size = new System.Drawing.Size(310, 22);
+            this.daystart.Size = new System.Drawing.Size(310, 40);
             this.daystart.TabIndex = 14;
             // 
             // cbbUser

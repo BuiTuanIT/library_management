@@ -32,6 +32,7 @@
             this.exitbutton = new MaterialSkin.Controls.MaterialButton();
             this.buttonSave = new MaterialSkin.Controls.MaterialButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbbDescription = new MaterialSkin.Controls.MaterialComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new MaterialSkin.Controls.MaterialTextBox();
             this.Id = new System.Windows.Forms.Label();
-            this.cbbDescription = new MaterialSkin.Controls.MaterialComboBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -130,6 +130,33 @@
             this.panel1.Size = new System.Drawing.Size(537, 692);
             this.panel1.TabIndex = 6;
             // 
+            // cbbDescription
+            // 
+            this.cbbDescription.AutoResize = false;
+            this.cbbDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbbDescription.Depth = 0;
+            this.cbbDescription.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbbDescription.DropDownHeight = 174;
+            this.cbbDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbDescription.DropDownWidth = 121;
+            this.cbbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cbbDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cbbDescription.FormattingEnabled = true;
+            this.cbbDescription.IntegralHeight = false;
+            this.cbbDescription.ItemHeight = 43;
+            this.cbbDescription.Items.AddRange(new object[] {
+            "Khóa thẻ 1 tháng",
+            "Khóa thẻ 2 tháng",
+            "Bồi thường",
+            "Khóa thẻ 1 tháng và bồi thường"});
+            this.cbbDescription.Location = new System.Drawing.Point(190, 446);
+            this.cbbDescription.MaxDropDownItems = 4;
+            this.cbbDescription.MouseState = MaterialSkin.MouseState.OUT;
+            this.cbbDescription.Name = "cbbDescription";
+            this.cbbDescription.Size = new System.Drawing.Size(310, 49);
+            this.cbbDescription.StartIndex = 0;
+            this.cbbDescription.TabIndex = 31;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -196,7 +223,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(190, 524);
             this.dateTimePicker1.MinimumSize = new System.Drawing.Size(4, 40);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -391,33 +418,6 @@
             this.Id.Size = new System.Drawing.Size(28, 25);
             this.Id.TabIndex = 1;
             this.Id.Text = "Id";
-            // 
-            // cbbDescription
-            // 
-            this.cbbDescription.AutoResize = false;
-            this.cbbDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbbDescription.Depth = 0;
-            this.cbbDescription.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbbDescription.DropDownHeight = 174;
-            this.cbbDescription.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbDescription.DropDownWidth = 121;
-            this.cbbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbbDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbbDescription.FormattingEnabled = true;
-            this.cbbDescription.IntegralHeight = false;
-            this.cbbDescription.ItemHeight = 43;
-            this.cbbDescription.Items.AddRange(new object[] {
-            "Khóa thẻ 1 tháng",
-            "Khóa thẻ 2 tháng",
-            "Bồi thường",
-            "Khóa thẻ 1 tháng và bồi thường"});
-            this.cbbDescription.Location = new System.Drawing.Point(190, 446);
-            this.cbbDescription.MaxDropDownItems = 4;
-            this.cbbDescription.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbbDescription.Name = "cbbDescription";
-            this.cbbDescription.Size = new System.Drawing.Size(310, 49);
-            this.cbbDescription.StartIndex = 0;
-            this.cbbDescription.TabIndex = 31;
             // 
             // DetailForm
             // 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.CheckinButton = new MaterialSkin.Controls.MaterialButton();
             this.logoutButton = new MaterialSkin.Controls.MaterialButton();
@@ -40,7 +41,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.contentPanel = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(263, 797);
             this.panel1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button3.Location = new System.Drawing.Point(2, 575);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(258, 61);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Thống kê Checkin";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -213,20 +227,6 @@
             this.contentPanel.Size = new System.Drawing.Size(1040, 797);
             this.contentPanel.TabIndex = 1;
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button3.Location = new System.Drawing.Point(2, 575);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(258, 61);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Thống kê Checkin";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -234,6 +234,9 @@
             this.ClientSize = new System.Drawing.Size(1313, 808);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Home";
             this.Text = "Home";
             this.panel1.ResumeLayout(false);

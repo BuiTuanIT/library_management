@@ -82,7 +82,16 @@ namespace WebApp.Controllers
             {
                 return Json(new { success = false, message = "Vui lòng đăng nhập để đặt thiết bị" });
             }
-
+            if (startDate.Date != endDate.Date)
+            {
+                return Json(new { success = false, message = "Bạn chỉ có thể đặt trả thiết bị trong cùng 1 ngày" });
+            }
+            TimeSpan minTime = new TimeSpan(7, 0, 0);
+            TimeSpan maxTime = new TimeSpan(20, 0, 0);
+            if(startDate.TimeOfDay <minTime || endDate.TimeOfDay > minTime)
+            {
+                return Json(new { success = false, message = "Bạn chỉ có thể mượn thiết bị từ 7:00 đến 20:00" });
+            }    
             // Kiểm tra tính khả dụng của thiết bị
             var isAvailable = !_context.Reservations
                 .Any(r => r.Device_Id == deviceId &&

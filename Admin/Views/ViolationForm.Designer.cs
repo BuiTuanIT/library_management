@@ -32,10 +32,10 @@
             this.ListViolation = new System.Windows.Forms.DataGridView();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.statistical = new MaterialSkin.Controls.MaterialButton();
             this.Reload = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
-            this.statistical = new MaterialSkin.Controls.MaterialButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListViolation)).BeginInit();
             this.panel1.SuspendLayout();
@@ -83,6 +83,26 @@
             this.panel1.Size = new System.Drawing.Size(1011, 86);
             this.panel1.TabIndex = 4;
             // 
+            // statistical
+            // 
+            this.statistical.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.statistical.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.statistical.Depth = 0;
+            this.statistical.HighEmphasis = true;
+            this.statistical.Icon = null;
+            this.statistical.Location = new System.Drawing.Point(781, 25);
+            this.statistical.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.statistical.MouseState = MaterialSkin.MouseState.HOVER;
+            this.statistical.Name = "statistical";
+            this.statistical.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.statistical.Size = new System.Drawing.Size(156, 36);
+            this.statistical.TabIndex = 4;
+            this.statistical.Text = "Thống kê vi phạm";
+            this.statistical.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.statistical.UseAccentColor = false;
+            this.statistical.UseVisualStyleBackColor = true;
+            this.statistical.Click += new System.EventHandler(this.statistical_Click);
+            // 
             // Reload
             // 
             this.Reload.BackColor = System.Drawing.Color.DarkViolet;
@@ -93,6 +113,7 @@
             this.Reload.TabIndex = 3;
             this.Reload.Text = "Reload";
             this.Reload.UseVisualStyleBackColor = false;
+            this.Reload.Click += new System.EventHandler(this.ViolationForm_Load);
             // 
             // DeleteButton
             // 
@@ -117,26 +138,6 @@
             this.AddButton.Text = "Thêm";
             this.AddButton.UseVisualStyleBackColor = false;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
-            // statistical
-            // 
-            this.statistical.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.statistical.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.statistical.Depth = 0;
-            this.statistical.HighEmphasis = true;
-            this.statistical.Icon = null;
-            this.statistical.Location = new System.Drawing.Point(781, 25);
-            this.statistical.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.statistical.MouseState = MaterialSkin.MouseState.HOVER;
-            this.statistical.Name = "statistical";
-            this.statistical.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.statistical.Size = new System.Drawing.Size(158, 36);
-            this.statistical.TabIndex = 4;
-            this.statistical.Text = "Thống kê vi phạm";
-            this.statistical.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.statistical.UseAccentColor = false;
-            this.statistical.UseVisualStyleBackColor = true;
-            this.statistical.Click += new System.EventHandler(this.statistical_Click);
             // 
             // ViolationForm
             // 

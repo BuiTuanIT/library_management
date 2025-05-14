@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtStudentCode = new MaterialSkin.Controls.MaterialTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chekin = new System.Windows.Forms.DateTimePicker();
             this.active = new MaterialSkin.Controls.MaterialSwitch();
             this.txtPhone = new MaterialSkin.Controls.MaterialTextBox();
             this.txtMail = new MaterialSkin.Controls.MaterialTextBox();
@@ -49,9 +52,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonClose = new MaterialSkin.Controls.MaterialButton();
             this.buttonSave = new MaterialSkin.Controls.MaterialButton();
-            this.chekin = new System.Windows.Forms.DateTimePicker();
-            this.txtStudentCode = new MaterialSkin.Controls.MaterialTextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -82,6 +82,43 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(560, 704);
             this.panel2.TabIndex = 1;
+            // 
+            // txtStudentCode
+            // 
+            this.txtStudentCode.AnimateReadOnly = false;
+            this.txtStudentCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtStudentCode.Depth = 0;
+            this.txtStudentCode.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtStudentCode.LeadingIcon = null;
+            this.txtStudentCode.Location = new System.Drawing.Point(197, 565);
+            this.txtStudentCode.MaxLength = 50;
+            this.txtStudentCode.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtStudentCode.Multiline = false;
+            this.txtStudentCode.Name = "txtStudentCode";
+            this.txtStudentCode.Size = new System.Drawing.Size(309, 50);
+            this.txtStudentCode.TabIndex = 21;
+            this.txtStudentCode.Text = "";
+            this.txtStudentCode.TrailingIcon = null;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(9, 581);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(133, 25);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Student Code";
+            // 
+            // chekin
+            // 
+            this.chekin.Enabled = false;
+            this.chekin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chekin.Location = new System.Drawing.Point(194, 294);
+            this.chekin.MinimumSize = new System.Drawing.Size(0, 40);
+            this.chekin.Name = "chekin";
+            this.chekin.Size = new System.Drawing.Size(309, 40);
+            this.chekin.TabIndex = 19;
             // 
             // active
             // 
@@ -173,9 +210,11 @@
             // 
             // birthday
             // 
-            this.birthday.Location = new System.Drawing.Point(197, 242);
+            this.birthday.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.birthday.Location = new System.Drawing.Point(197, 224);
+            this.birthday.MinimumSize = new System.Drawing.Size(0, 40);
             this.birthday.Name = "birthday";
-            this.birthday.Size = new System.Drawing.Size(309, 22);
+            this.birthday.Size = new System.Drawing.Size(309, 40);
             this.birthday.TabIndex = 12;
             // 
             // txtPassWord
@@ -359,41 +398,6 @@
             this.buttonSave.UseAccentColor = false;
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
-            // chekin
-            // 
-            this.chekin.Enabled = false;
-            this.chekin.Location = new System.Drawing.Point(197, 312);
-            this.chekin.Name = "chekin";
-            this.chekin.Size = new System.Drawing.Size(309, 22);
-            this.chekin.TabIndex = 19;
-            // 
-            // txtStudentCode
-            // 
-            this.txtStudentCode.AnimateReadOnly = false;
-            this.txtStudentCode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStudentCode.Depth = 0;
-            this.txtStudentCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtStudentCode.LeadingIcon = null;
-            this.txtStudentCode.Location = new System.Drawing.Point(197, 565);
-            this.txtStudentCode.MaxLength = 50;
-            this.txtStudentCode.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtStudentCode.Multiline = false;
-            this.txtStudentCode.Name = "txtStudentCode";
-            this.txtStudentCode.Size = new System.Drawing.Size(309, 50);
-            this.txtStudentCode.TabIndex = 21;
-            this.txtStudentCode.Text = "";
-            this.txtStudentCode.TrailingIcon = null;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(9, 581);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(133, 25);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Student Code";
             // 
             // DetailForm
             // 

@@ -92,6 +92,7 @@
             this.Reload.TabIndex = 3;
             this.Reload.Text = "Reload";
             this.Reload.UseVisualStyleBackColor = false;
+            this.Reload.Click += new System.EventHandler(this.Reload_Click);
             // 
             // DeleteButton
             // 

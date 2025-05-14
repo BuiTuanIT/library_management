@@ -32,14 +32,14 @@ namespace Admin.Views.DeviceForms
             deviceVailable.ChartAreas[0].AxisX.Interval = 1;
             deviceVailable.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
 
-            deviceVailable.ChartAreas[0].AxisY.Title = "Số lượng đang mượn";
+            deviceVailable.ChartAreas[0].AxisY.Title = "Số lượng được mượn";
             deviceVailable.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
 
             deviceVailable.ChartAreas[0].BackColor = Color.White;
             deviceVailable.BackColor = Color.White;
 
             // Cấu hình series
-            deviceVailable.Series[0].Name = "Thiết bị đang mượn";
+            deviceVailable.Series[0].Name = "Thiết bị được mượn";
             deviceVailable.Series[0].ChartType = SeriesChartType.Column;
         }
 
@@ -57,7 +57,7 @@ namespace Admin.Views.DeviceForms
                     deviceVailable.Series[0].Points.AddXY(deviceName, count);
                 }
                 deviceVailable.Titles.Clear();
-                deviceVailable.Titles.Add(new Title("Thống kê thiết bị đang được mượn"));
+                deviceVailable.Titles.Add(new Title("Thống kê thiết bị được mượn"));
             }
             catch (Exception ex)
             {

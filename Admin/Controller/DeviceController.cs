@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Shared.Models;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace Admin.Controller
 {
@@ -59,6 +60,17 @@ namespace Admin.Controller
 
         public bool AddDevice(Device device)
         {
+            string checkQuery = "SELECT COUNT(*) FROM device WHERE device_code = @device_code";
+            MySqlParameter[] checkParameters =
+            {
+                new MySqlParameter("@device_code", device.Device_Code)
+            };
+            int count = Convert.ToInt32(db.ExecuteScalar(checkQuery, checkParameters));
+            if (count > 0)
+            {
+                MessageBox.Show("Mã thiết bị đã tồn tại trong hệ thống.");
+                return false;
+            }
 
             string query = "INSERT INTO DEVICE (category_id, device_code, status, is_borrow)" +
                 "VALUE (@category_id, @device_code, @status, @is_borrow)";
@@ -75,6 +87,19 @@ namespace Admin.Controller
 
         public bool UpdateDevice(Device device)
         {
+            string checkQuery = "SELECT COUNT(*) FROM device WHERE device_code = @device_code AND device_id != @device_id";
+            MySqlParameter[] checkParameters =
+            {
+                new MySqlParameter("@device_code", device.Device_Code),
+                new MySqlParameter("@device_id", device.Device_Id)
+            };
+            int count = Convert.ToInt32(db.ExecuteScalar(checkQuery, checkParameters));
+            if (count > 0)
+            {
+                MessageBox.Show("Mã thiết bị đã tồn tại trong hệ thống.");
+                return false;
+            }
+
             string query = "UPDATE device SET category_id = @category_id, device_code = @device_code, status = @status, is_borrow = @is_borrow WHERE device_id = @device_id";
             MySqlParameter[] parameters =
             {
